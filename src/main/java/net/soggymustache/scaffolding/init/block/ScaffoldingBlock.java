@@ -1,30 +1,41 @@
 package net.soggymustache.scaffolding.init.block;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockPlanks;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.soggymustache.scaffolding.Reference;
+
+
 
 public class ScaffoldingBlock {
 	
-	public static final List<Block> BLOCKS = new ArrayList<Block>();
+
+	public static Block scaffolding_block;
 	
-	public static final Block SCAFFOLDING_BLOCK = new ScaffoldingBlockType("scaffolding_block");
-	
-	
-	public static void registerBlocks() {
-		ForgeRegistries.BLOCKS.registerAll(BLOCKS.toArray(new Block[BLOCKS.size()]));
+	public static void init() {
+
+
+		scaffolding_block = new ScaffoldingBlockType().setUnlocalizedName("scaffolding_block").setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
-	public static void registerRenders() {
-		for(Block itm : ScaffoldingBlock.BLOCKS) {
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(itm), 0, new ModelResourceLocation(itm.getRegistryName(), "inventory"));
-		}
+	public static void register()
+	{
+
+		GameRegistry.registerBlock(scaffolding_block, scaffolding_block.getUnlocalizedName().substring(5));
 	}
 	
+	public static void registerRenders()
+	{
+
+		registerRenders(scaffolding_block);
+	}
+	
+	public static void registerRenders(Block block)
+	{
+		Item item = Item.getItemFromBlock(block);
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5), "inventory")); 						
+	}
 }
