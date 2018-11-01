@@ -4,7 +4,7 @@
   "name": "Scaffolding Block Mod",
   "description": "Adds a block that is great for climbing/using as scaffolding",
   "version": "1.0",
-  "mcversion": "1.11",
+  "mcversion": "1.10",
   "url": "http://soggymustache.net",
   "updateUrl": "",
   "authorList": ["SoggyMustache"],

@@ -14,23 +14,26 @@ public class ScaffoldingModMain {
 
 	@Instance(Reference.MOD_ID)
 	public static ScaffoldingModMain modInstance;
-
+	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
-
+	
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		proxy.preInit(event);
-		proxy.registerRenders();
 	}
-
+	
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event)
+	{
+		proxy.registerRenders();
 		proxy.init(event);
 	}
-
+	
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		proxy.postInit(event);
 	}
 }

@@ -1,25 +1,38 @@
 package net.soggymustache.scaffolding.init.item;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.soggymustache.scaffolding.Reference;
 
-public class ScaffoldingItem {
+public class ScaffoldingItem
+{
 
-	public static final List<Item> ITEMS = new ArrayList<Item>();
 	
 	
-	public static void registerItems() {
-		ForgeRegistries.ITEMS.registerAll(ITEMS.toArray(new Item[ITEMS.size()]));
+	
+	public static void init()
+	{
+
+		
+		
+		
 	}
 
-	public static void registerRenders() {
-		for (Item itm : ScaffoldingItem.ITEMS) {
-			ModelLoader.setCustomModelResourceLocation(itm, 0, new ModelResourceLocation(itm.getRegistryName(), "inventory"));
-		}
+	private static void register(Item item)
+	{
+		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
+	}
+
+	public static void registerRenderers()
+	{
+		
+
+	}
+
+	public static void registerItemRenderer(Item item)
+	{
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
 	}
 }

@@ -2,31 +2,51 @@ package net.soggymustache.scaffolding.init.block;
 
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.util.DamageSource;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.soggymustache.scaffolding.init.item.ScaffoldingItem;
 
 public class ScaffoldingBlockType extends BlockDirectional {
-
-	public ScaffoldingBlockType(String unloc) {
-		super(Material.WOOD);
-		this.setUnlocalizedName(unloc);
-		this.setRegistryName(unloc);
-		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		
-		ScaffoldingBlock.BLOCKS.add(this);
-		ScaffoldingItem.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+	
+	public ScaffoldingBlockType() {
+		 super(Material.WOOD);
+	    // this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
-
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
-
+//	 public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+//	    {
+//	        super.onBlockAdded(worldIn, pos, state);
+//	    }    
+//
+//	    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
+//	    {
+//	        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+//	    }
+//
+//	    public IBlockState getStateFromMeta(int meta)
+//	    {
+//	        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+//	    }
+//
+//	    public int getMetaFromState(IBlockState state)
+//	    {
+//	        return ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
+//	    }
+//
+//	    protected BlockStateContainer createBlockState()
+//	    {
+//	        return new BlockStateContainer(this, new IProperty[] {FACING});
+//	    }
+//	    
+		@Override
+		public boolean isOpaqueCube(IBlockState state) {
+			return false;
+		}
+	
 }
+
+
